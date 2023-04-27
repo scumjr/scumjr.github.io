@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Automatic subtitles thanks to SODA
+title: Automatic Subtitles Thanks to SODA
 ---
 
 This blogpost explains how a quick but working solution was built to automatically generate subtitles and transcripts from audio and video files. As a bonus, a simple web interface is available for non tech-savvy users. The source code of the project can be found on [github.com/scumjr/highball](https://github.com/scumjr/highball). Cheers!
