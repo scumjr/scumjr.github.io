@@ -7,18 +7,18 @@ This blogpost explains how a quick but working solution was built to automatical
 
 <!-- more -->
 
-In the context of user research, a friend of mine regulary conducts video interviews. The recordings are replayed over and over in order to analyze the answers to a set of questions.
+In the context of user research, a friend of mine regularly conducts video interviews. The recordings are replayed over and over in order to analyze the answers to a set of questions.
 
-The recordings are quite long (usually between 45min and 1h30) and the process is manual and tedious. She looked for a service to produce transcripts of these recordings but didn't find an offer that fulfill her needs. Indeed, interviews are conducted in non-English languages (eg. German, French) and most services either don't handle them or produce low quality transcripts. Additionally, most services are hosted in the cloud, which means that interview files are probably shared with 3rd parties.
+The recordings are quite long (usually between 45 min and 1h30) and the process is manual and tedious. She looked for a service to produce transcripts of these recordings but didn't find an offer that fulfilled her needs. Indeed, interviews are conducted in non-English languages (eg. German, French) and most services either don't handle them or produce low quality transcripts. Additionally, most services are hosted in the cloud, which means that interview files are probably shared with 3rd parties.
 
 
 # State of the Art
 
-[Speech recognition](https://en.wikipedia.org/wiki/Speech_recognition) is an active research topic. While free and open-source solutions exist, most of them require large storage and CPU resources to use or train them. Few high quality and free open dataset exist, especially for non-English languages.
+[Speech recognition](https://en.wikipedia.org/wiki/Speech_recognition) is an active research topic. While free and open-source solutions exist, most of them require large storage and CPU resources to use or train them. Few high quality and free open datasets exist, especially for non-English languages.
 
 I spent a few hours trying to install and use some projects from Wikipedia's [list of speech recognition software](https://en.wikipedia.org/wiki/List_of_speech_recognition_software) ([Kaldi](https://kaldi-asr.org/), [Common Voice](https://commonvoice.mozilla.org/), [VOSK](https://alphacephei.com/vosk/) and [DeepSpeech](https://github.com/mozilla/DeepSpeech)) without any success. The main reasons are either the lack of knowledge regarding some components (eg. TensorFlow) or no support/dataset for non-English languages.
 
-I've no doubt that with enough time one of these projects can achieve great results, but I eventually went an other way.
+I've no doubt that with enough time one of these projects can achieve great results, but I eventually went another way.
 
 
 # Google Live Caption
@@ -32,7 +32,7 @@ The idea of making this library standalone isn't new: 3 years ago, [biemster](ht
 
 ## Retrieving libsoda.so
 
-While publicly advertised by Google, Google Live Caption does not seem to be enabled anymore in Chrome nor Chromium for unknown reasons, as mentioned in this commit message:
+While publicly advertised by Google, Google Live Caption does not seem to be enabled anymore in Chrome or Chromium for unknown reasons, as mentioned in this commit message:
 
 > All of these changes are gated behind the kLiveCaptionMultiLanguage flag.
 
@@ -67,7 +67,7 @@ Left as an [exercise](https://github.com/biemster/gasr/issues/5) to the reader.
 
 The library configuration (channel count, sample rate, language pack directory, etc.) is done through a [Protobuf](https://github.com/chromium/chromium/blob/e055a80240d4741a71bde4e19da6333af95aea3d/chrome/services/speech/soda/proto/soda_api.proto) message.
 
-Once initialized, the audio stream can be fed to the library at the specified sample rate. The recognition results are passed to a callback which write to stdout each word along its timestamp. That's it!
+Once initialized, the audio stream can be fed to the library at the specified sample rate. The recognition results are passed to a callback which writes to stdout each word along its timestamp. That's it!
 
 1. Convert the media file into `.wav`:
 
@@ -143,7 +143,7 @@ This project is a quick and dirty solution to automatically generate subtitles a
 - According to the Protobuf file, a [speaker change detection](https://github.com/chromium/chromium/blob/e055a80240d4741a71bde4e19da6333af95aea3d/chrome/services/speech/soda/proto/soda_api.proto#L69-L70) feature is available but I didn't find how to make it work.
 
 
-Anyway, the result are pretty amazing for less than 500 lines of code! 
+Anyway, the results are pretty amazing for less than 500 lines of code! 
 
 ```console
 $ wc -l highball/src/*.c highball/subtitles.py 
